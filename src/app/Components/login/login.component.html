@@ -1,0 +1,40 @@
+<div class="container d-flex justify-content-center align-items-center vh-100">
+  <div class="card p-4 shadow-lg" style="width: 400px;">
+    <h2 class="text-center mb-4">Login</h2>
+    <form (ngSubmit)="login()">
+      <div class="mb-3">
+        <label for="username" class="form-label">Username:</label>
+        <input
+          id="username"
+          type="text"
+          class="form-control"
+          [(ngModel)]="loginRequest.userName"
+          name="username"
+          required
+          #usernameInput="ngModel"
+        />
+        <div *ngIf="usernameInput.invalid && usernameInput.touched" class="text-danger">
+          Username is required.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="password" class="form-label">Password:</label>
+        <input
+          id="password"
+          type="password"
+          class="form-control"
+          [(ngModel)]="loginRequest.password"
+          name="password"
+          required
+          #passwordInput="ngModel"
+        />
+        <div *ngIf="passwordInput.invalid && passwordInput.touched" class="text-danger">
+          Password is required.
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100" [disabled]="usernameInput.invalid || passwordInput.invalid">Login</button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,70 @@
+<div class="container mt-5">
+  <h2 class="text-center">Transaction Form</h2>
+  <form #transactionForm="ngForm" (ngSubmit)="onSubmit()" class="transaction-form">
+    <div class="mb-3">
+      <label for="processingCode" class="form-label">Processing Code</label>
+      <input type="text" id="processingCode" class="form-control" [(ngModel)]="transactionData.processingCode" name="processingCode" required>
+      <div *ngIf="transactionForm.submitted && !transactionData.processingCode" class="invalid-feedback">
+        Processing Code is required.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="systemTraceNr" class="form-label">System Trace Number</label>
+      <input type="text" id="systemTraceNr" class="form-control" [(ngModel)]="transactionData.systemTraceNr" name="systemTraceNr" required>
+      <div *ngIf="transactionForm.submitted && !transactionData.systemTraceNr" class="invalid-feedback">
+        System Trace Number is required.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="functionCode" class="form-label">Function Code</label>
+      <input type="text" id="functionCode" class="form-control" [(ngModel)]="transactionData.functionCode" name="functionCode" required>
+      <div *ngIf="transactionForm.submitted && !transactionData.functionCode" class="invalid-feedback">
+        Function Code is required.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="cardNo" class="form-label">Card Number</label>
+      <input type="text" id="cardNo" class="form-control" [(ngModel)]="transactionData.cardNo" name="cardNo" required>
+      <div *ngIf="transactionForm.submitted && !transactionData.cardNo" class="invalid-feedback">
+        Card Number is required.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="cardHolder" class="form-label">Card Holder</label>
+      <input type="text" id="cardHolder" class="form-control" [(ngModel)]="transactionData.cardHolder" name="cardHolder" required>
+      <div *ngIf="transactionForm.submitted && !transactionData.cardHolder" class="invalid-feedback">
+        Card Holder is required.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="amountTrxn" class="form-label">Amount</label>
+      <input type="number" id="amountTrxn" class="form-control" [(ngModel)]="transactionData.amountTrxn" name="amountTrxn" required>
+      <div *ngIf="transactionForm.submitted && !transactionData.amountTrxn" class="invalid-feedback">
+        Amount is required.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="currencyCode" class="form-label">Currency Code</label>
+      <input type="text" id="currencyCode" class="form-control" [(ngModel)]="transactionData.currencyCode" name="currencyCode" required>
+      <div *ngIf="transactionForm.submitted && !transactionData.currencyCode" class="invalid-feedback">
+        Currency Code is required.
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit Transaction</button>
+  </form>
+
+  <div *ngIf="transactionResponse" class="mt-4">
+    <h3>Transaction Response</h3>
+    <p><strong>Response Code:</strong> {{ transactionResponse.responseCode }}</p>
+    <p><strong>Message:</strong> {{ transactionResponse.message }}</p>
+    <p><strong>Approval Code:</strong> {{ transactionResponse.approvalCode }}</p>
+    <p><strong>DateTime:</strong> {{ transactionResponse.dateTime }}</p>
+  </div>
+</div>
